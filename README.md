@@ -73,9 +73,3 @@ The robot's position is saved in the database and restored on refresh.
 - Make sure both the frontend and backend servers are running in separate terminals.
 - If you change backend code, restart the API server.
 - If you see CORS or network errors, check that the backend is running on port 4000.
-
----
-
-## License
-
-MIT
