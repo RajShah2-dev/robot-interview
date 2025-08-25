@@ -1,26 +1,34 @@
 # Toy-Robot Simulator
 
-An interactive 5×5 robot simulation built using React (frontend) and Express with SQLite (backend)
+An interactive 5×5 robot simulation built with React (frontend) and Express + SQLite (backend).
 
 ---
-## Running the Project
 
-First, run the development server:
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+---
+
+## Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd robot-interview
 ```
 
----
-## Running the API Server
+### 2. Install dependencies
 
-The backend server is built with Express and SQLite. To run the server:
+```bash
+npm install
+```
+
+### 3. Start the backend API server
+
+Open a new terminal and run:
 
 ```bash
 cd server
@@ -28,8 +36,46 @@ npm install
 npm start
 ```
 
-This will start the API server on [http://localhost:3001](http://localhost:3001) by default. Make sure the frontend and backend are running in separate terminals.
+The API server will run at [http://localhost:4000](http://localhost:4000) and create a `robot.db` file in the `server` directory.
 
-The database file (`robot.db`) will be created automatically in the `server` directory.
+### 4. Start the frontend (Next.js)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+In the main project directory, run:
+
+```bash
+npm run dev
+```
+
+The app will be available at [http://localhost:3000](http://localhost:3000)
+
+---
+
+## How to Use
+
+1. Open [http://localhost:3000/robot](http://localhost:3000/robot) in your browser.
+2. Click any cell to place the robot.
+3. Use the Left, Move, and Right buttons to control the robot.
+4. Click "Report" to see the robot's current position and direction.
+
+The robot's position is saved in the database and restored on refresh.
+
+---
+
+## Project Structure
+
+- `src/app/robot/` — Frontend React components and logic
+- `server/` — Express API and SQLite database
+
+---
+
+## Troubleshooting
+
+- Make sure both the frontend and backend servers are running in separate terminals.
+- If you change backend code, restart the API server.
+- If you see CORS or network errors, check that the backend is running on port 4000.
+
+---
+
+## License
+
+MIT
