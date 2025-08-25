@@ -13,7 +13,7 @@ const Grid: React.FC<GridProps> = ({ robot, robotImages, directions, onPlace }) 
   const width = 5
   for (let y = length-1; y >= 0; y--) {
     for (let x = 0; x < width; x++) {
-      const idx = y * 5 + x;
+      const idx = y * width + x;
       const isRobot = robot.x === x && robot.y === y;
       cells.push(
         <div
