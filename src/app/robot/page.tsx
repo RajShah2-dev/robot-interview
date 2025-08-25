@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { rotateLeft, rotateRight, moveForward, apiRotate, apiMove, apiReport } from './moveLogic';
 
 function RobotPage() {
@@ -45,6 +45,28 @@ function RobotPage() {
     '/images/robot-down.png',
     '/images/robot-left.png'
   ];
+
+  // Load robot position from API on mount
+  useEffect(() => {
+    async function fetchRobot() {
+      try {
+        const res = await fetch('http://localhost:4000/api/report');
+        const data = await res.json();
+        // Map direction string to dir index
+        const dirIndex = directions.findIndex(
+          d => d.toLowerCase() === (data.direction || '').toLowerCase()
+        );
+        setRobot({
+          x: typeof data.x === 'number' ? data.x : 2,
+          y: typeof data.y === 'number' ? data.y : 2,
+          dir: dirIndex >= 0 ? dirIndex : 0
+        });
+      } catch (e) {
+        // fallback to default
+      }
+    }
+    fetchRobot();
+  }, []);
 
   const handleRotateLeft = async () => {
     setRobot(r => {
