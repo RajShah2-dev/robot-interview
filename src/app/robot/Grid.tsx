@@ -9,8 +9,10 @@ interface GridProps {
 
 const Grid: React.FC<GridProps> = ({ robot, robotImages, directions, onPlace }) => {
   const cells = [];
-  for (let y = 4; y >= 0; y--) {
-    for (let x = 0; x < 5; x++) {
+  const length = 5
+  const width = 5
+  for (let y = length-1; y >= 0; y--) {
+    for (let x = 0; x < width; x++) {
       const idx = y * 5 + x;
       const isRobot = robot.x === x && robot.y === y;
       cells.push(
